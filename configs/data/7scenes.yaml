@@ -1,0 +1,43 @@
+DATASET: 
+    type: 7scene
+    base_dir: data/7scenes
+    tempo_interval: 1
+    near: 0.3
+    far: 5.0
+
+    # rescale_far_limit: 3. # scale the whole scene to limit far plane
+
+    # image
+    TRANSFORM:
+        - ResizeAndCrop:
+            target_size: 256 # short side
+            base_image_size: 16
+
+    AUG_TRANSFORM:
+        - RandomZoom:
+            aug_scale_min: 0.666
+            aug_scale_max: 1.5
+        - RandomRotate:
+            aug_rotation: 30
+        - ColorJitter:
+            brightness: 0.1
+            contrast: 0.1
+            saturation: 0.1
+            hue: 0.1
+
+    # ref depth augmentation
+    aug_ref_depth: True
+    aug_depth_range_prob: 0.05
+    aug_depth_range_min: 0.95
+    aug_depth_range_max: 1.05
+    aug_use_depth_offset: True
+    aug_depth_offset_prob: 0.25
+    aug_depth_offset_region_min: 0.05
+    aug_depth_offset_region_max: 0.1
+    aug_depth_offset_min: 0.5
+    aug_depth_offset_max: 1.0
+    aug_depth_offset_local: 0.1
+    aug_use_depth_small_offset: True
+    aug_use_global_noise: True
+    aug_global_noise_prob: 0.5
+    aug_depth_small_offset_prob: 0.5

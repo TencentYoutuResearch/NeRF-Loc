@@ -1,0 +1,37 @@
+expname = horns
+basedir = /youtu/xlab-team4/jenningsliu/nerf_loc_logs/llff
+datadir = ./data/nerf_llff_data/horns
+dataset_type = llff
+scene = horns
+
+factor = 8
+llffhold = 8
+
+N_rand = 1024
+N_samples = 64
+N_importance = 0
+
+use_viewdirs = True
+
+use_depth_supervision = False
+
+encode_appearance = False
+appearance_emb_dim = 128
+
+n_views_train = 5
+n_views_test = 5
+
+train_nerf = True
+train_pose = False
+
+chunk = 2048
+
+backbone2d = cotr
+backbone2d_use_fpn = True
+backbone2d_fpn_dim = 192
+
+refine_support_depth = True
+version = finetune
+
+test_render_interval = 5
+ckpt = experiments/generalize/dtu_gso_space_iconic_fg/checkpoints/pretrain.ckpt

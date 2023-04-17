@@ -1,0 +1,53 @@
+expname = mario
+basedir = /youtu/xlab-team4/jenningsliu/nerf_loc_logs/capture_data
+datadir = /youtu/xlab-team4/jenningsliu/localization/capture_data/colmap/dense
+dataset_type = colmap
+scene = mario
+
+N_samples = 64
+N_rand = 512
+max_epochs = 200
+
+use_depth_supervision = True
+
+coarse_num_3d_keypoints = 1024
+fine_num_3d_keypoints = 1024
+
+i_weights = 50000
+i_testset = 50000
+
+backbone2d_use_fpn = True
+cascade_matching = False
+
+encode_appearance = True
+appearance_emb_dim = 128
+
+n_views_train = 16
+n_views_test = 16
+
+train_nerf = True
+train_pose = True
+
+chunk = 2048
+
+backbone2d = cotr
+backbone2d_fpn_dim = 192
+use_color_volume = False
+support_image_selection = coreset
+coreset_sampler = FPS
+image_core_set_size = 16
+image_retrieval_method = netvlad
+image_retrieval_method_train = netvlad
+image_retrieval_method_test = netvlad
+image_retrieval_interval_train = 10
+image_retrieval_interval_test = 10
+
+render_loss_weight = 1.0
+ref_depth_loss_weight = 1.0
+
+render_feature = True
+use_scene_coord_memorization = True
+version = colmap_sfm
+keypoints_3d_source = sfm
+
+ckpt = experiments/generalize/dtu_gso_space_iconic_fg/checkpoints/pretrain.ckpt

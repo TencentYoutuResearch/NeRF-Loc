@@ -1,0 +1,35 @@
+expname = mvs
+basedir = /youtu/xlab-team4/jenningsliu/nerf_loc_logs/dtu
+dataset_type = nerf_pretrain
+datadir = /youtu/youtu-public/SLAM/DTU/mvs_training/dtu
+
+no_batching = False
+
+use_viewdirs = True
+learn_descriptor = True
+
+N_samples = 64
+N_rand = 1024
+N_iters = 200000
+
+backbone2d_use_fpn = True
+
+encode_appearance = True
+appearance_emb_dim = 128
+
+n_views_train = 3
+n_views_test = 3
+
+train_nerf = True
+train_pose = False
+
+chunk = 2048
+
+backbone2d = cotr
+backbone2d_fpn_dim = 192
+support_image_selection = retrieval
+image_core_set_size = 16
+image_retrieval_method = netvlad
+use_depth_supervision = False
+use_color_volume = False
+version = neuray_ibrnet_pointnerf_truncat

@@ -1,0 +1,45 @@
+expname = lego
+basedir = /youtu/xlab-team4/jenningsliu/nerf_loc_logs/blender
+datadir = ./data/nerf_synthetic/lego
+dataset_type = blender
+scene = lego
+
+no_batching = False
+
+use_viewdirs = True
+render_feat = True
+white_bkgd = True
+lrate_decay = 500
+
+N_samples = 64
+N_importance = 0
+N_rand = 1024
+
+precrop_iters = 500
+precrop_frac = 0.5
+
+half_res = True
+
+
+use_depth_supervision = False
+
+encode_appearance = False
+appearance_emb_dim = 128
+
+n_views_train = 5
+n_views_test = 5
+
+train_nerf = True
+train_pose = False
+
+chunk = 2048
+
+backbone2d = cotr
+backbone2d_use_fpn = True
+backbone2d_fpn_dim = 192
+
+refine_support_depth = True
+version = finetune
+
+test_render_interval = 50
+ckpt = experiments/generalize/dtu_gso_space_iconic_fg/checkpoints/pretrain.ckpt

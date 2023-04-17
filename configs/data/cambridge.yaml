@@ -1,0 +1,25 @@
+DATASET:
+    type: cambridge
+    base_dir: data/Cambridge
+    tempo_interval: 1
+    # rescale_far_limit: 5. # scale the whole scene to limit far plane
+    scale_factor: 0.05
+    # scale_factor: 1
+
+    # image
+    TRANSFORM:
+        - ResizeAndCrop:
+            target_size: 256 # short side
+            base_image_size: 32
+
+    AUG_TRANSFORM:
+        - RandomZoom:
+            aug_scale_min: 1.25
+            aug_scale_max: 0.8
+        # - RandomRotate:
+        #     aug_rotation: 15
+        - ColorJitter:
+            brightness: 0.1
+            contrast: 0.1
+            saturation: 0.1
+            hue: 0.1

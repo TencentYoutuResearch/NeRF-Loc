@@ -1,0 +1,47 @@
+expname: office2_5b
+basedir: experiments/12scenes
+dataset_type: video_12scenes
+scenes: [office2/5b]
+
+render:
+  N_samples: 64
+  N_rand: 1024
+  chunk: 2048
+
+max_epochs: 30
+
+use_depth_supervision: True
+
+matching:
+  keypoints_3d_sampling: random
+  keypoints_3d_sampling_max_keep: 16384
+  coarse_matching_depth_thresh: 0.2
+  coarse_num_3d_keypoints: 1024
+  fine_num_3d_keypoints: 1024
+
+backbone2d_use_fpn: True
+# cascade_matching: True
+
+encode_appearance: True
+appearance_emb_dim: 128
+
+n_views_train: 5
+n_views_test: 10
+
+train_nerf: True
+train_pose: True
+
+backbone2d: cotr
+backbone2d_fpn_dim: 192
+support_image_selection: retrieval
+image_core_set_size: 16
+image_retrieval_method_train: netvlad
+image_retrieval_method_test: netvlad
+image_retrieval_interval_train: 20
+image_retrieval_interval_test: 10
+
+render_loss_weight: 1.0
+ref_depth_loss_weight: 0.1
+
+use_scene_coord_memorization: True
+ckpt: experiments/12scenes/all/default/checkpoints/last.ckpt

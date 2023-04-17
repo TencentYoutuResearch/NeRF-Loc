@@ -1,0 +1,51 @@
+expname: all
+basedir: experiments/cambridge
+dataset_type: video_cambridge
+scenes: [ShopFacade]
+
+render:
+  N_samples: 64
+  N_importance: 0
+  N_rand: 1024
+  chunk: 2048
+  use_render_uncertainty: True
+  render_feature: True
+
+max_epochs: 50
+
+use_depth_supervision: False
+
+matching:
+  keypoints_3d_sampling: random
+  keypoints_3d_sampling_max_keep: 100000
+  coarse_matching_depth_thresh: 2.
+  coarse_num_3d_keypoints: 1024
+  fine_num_3d_keypoints: 1024
+
+backbone2d_use_fpn: True
+
+encode_appearance: True
+appearance_emb_dim: 128
+
+n_views_train: 5
+n_views_test: 10
+
+train_nerf: True
+train_pose: True
+
+backbone2d: cotr
+backbone2d_fpn_dim: 192
+support_image_selection: retrieval
+image_core_set_size: 16
+image_retrieval_method_train: netvlad
+image_retrieval_method_test: netvlad
+image_retrieval_interval_train: 1
+image_retrieval_interval_test: 1
+
+render_loss_weight: 1.0
+ref_depth_loss_weight: 0.1
+
+use_scene_coord_memorization: True
+
+version: ShopFacade_ft
+ckpt: experiments/cambridge/all/multi_scenes/checkpoints/last.ckpt

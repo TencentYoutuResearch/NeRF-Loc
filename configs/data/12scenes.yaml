@@ -1,0 +1,27 @@
+DATASET: 
+    type: 12scene
+    base_dir: data/12scenes
+    tempo_interval: 1
+
+    # # image
+    # TRANSFORM:
+    #     - DownSample:
+    #         scale_factor: 4
+
+    # image
+    TRANSFORM:
+        - ResizeAndCrop:
+            target_size: 256 # short side
+            base_image_size: 32
+
+    AUG_TRANSFORM:
+        # - RandomZoom:
+        #     aug_scale_min: 0.66666
+        #     aug_scale_max: 1.5
+        # - RandomRotate:
+        #     aug_rotation: 30
+        - ColorJitter:
+            brightness: 0.1
+            contrast: 0.1
+            saturation: 0.1
+            hue: 0.1
