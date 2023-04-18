@@ -1,7 +1,7 @@
 # NeRF-Loc
 
 
-This project the PyTorch implementation of [NeRF-Loc](), a visual-localization pipeline based on conditional NeRF.
+This project the PyTorch implementation of [NeRF-Loc](https://arxiv.org/abs/2304.07979), a visual-localization pipeline based on conditional NeRF.
 ![overview](./imgs/overview.jpg)
 
 ## Installation
@@ -81,12 +81,12 @@ Our codes are largely borrowed from the following works, thanks for their excell
 ## Citation
 TODO:
 ```
-@misc{mildenhall2020nerf,
-    title={NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis},
-    author={Ben Mildenhall and Pratul P. Srinivasan and Matthew Tancik and Jonathan T. Barron and Ravi Ramamoorthi and Ren Ng},
-    year={2020},
-    eprint={2003.08934},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+@misc{liu2023nerfloc,
+      title={NeRF-Loc: Visual Localization with Conditional Neural Radiance Field}, 
+      author={Jianlin Liu and Qiang Nie and Yong Liu and Chengjie Wang},
+      year={2023},
+      eprint={2304.07979},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
