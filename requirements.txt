@@ -19,3 +19,7 @@ kornia==0.6.4
 numba==0.55.1
 omegaconf==2.2.0
 yacs==0.1.8
+lmdb
+inplace_abn
+pytorch3d
+transforms3d

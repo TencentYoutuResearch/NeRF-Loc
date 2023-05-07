@@ -79,14 +79,3 @@ class NeurayBaseDataset(Dataset):
         if 'true_depth' in ref_imgs_info:
             ret['topk_depths_gt'] = ref_imgs_info['true_depth'].squeeze(1)
         return ret
-
-if __name__ == '__main__':
-    from configs import config_parser
-    parser = config_parser()
-    args = parser.parse_args()
-    dataset = LLFFDataset(args, 'train')
-    # print(dataset[0])
-    for k,v in dataset[0].items():
-        if type(v) != str:
-            print(k, v.shape)
-    # print(len(dataset))

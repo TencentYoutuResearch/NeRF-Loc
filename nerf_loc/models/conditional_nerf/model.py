@@ -16,8 +16,11 @@ import torchvision.transforms as T
 import numpy as np
 from einops import rearrange, reduce, repeat
 
-from models.ops.knn.knn_utils import knn_points, knn_gather
-from models.ibrnet.ibrnet import Projector, MultiHeadAttention
+# from nerf_loc.models.ops.knn.knn_utils import knn_points, knn_gather
+from pytorch3d.ops import knn_points, knn_gather
+
+from third_party.IBRNet.ibrnet.projection import Projector
+from third_party.IBRNet.ibrnet.mlp_network import MultiHeadAttention
 from .losses import RenderingLoss
 from .ray_unet import RayUnet
 from .multiview_aggregator import MultiviewFeatureAggregator

@@ -12,7 +12,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from models.ibrnet.ibrnet import fused_mean_variance, Projector, MultiHeadAttention
+from third_party.IBRNet.ibrnet.mlp_network import fused_mean_variance, MultiHeadAttention
+from third_party.IBRNet.ibrnet.projection import Projector
 from .depth_fusion import DepthFusionNet, project_points_dict, interpolate_feature_map, depth2points, depth2inv_dists
 from .visibility_decoder import MixtureLogisticsDistDecoder
 from .losses import to_inverse_normalized_depth

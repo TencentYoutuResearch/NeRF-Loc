@@ -1,0 +1,6 @@
+[submodule "third_party/NeuRay"]
+	path = third_party/NeuRay
+	url = https://github.com/liuyuan-pal/NeuRay.git
+[submodule "third_party/IBRNet"]
+	path = third_party/IBRNet
+	url = https://github.com/googleinterns/IBRNet.git

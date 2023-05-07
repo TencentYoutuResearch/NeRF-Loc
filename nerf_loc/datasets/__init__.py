@@ -8,7 +8,7 @@ Description:
 Copyright (c) 2022 by Tencent, All Rights Reserved. 
 """
 import yaml 
-from utils.common import AttrDict
+from nerf_loc.utils.common import AttrDict
 import os
 import copy
 
