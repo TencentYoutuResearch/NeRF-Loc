@@ -17,10 +17,10 @@ import cv2
 import pickle
 import itertools
 
-from utils.metrics import compute_pose_error, compute_matching_iou
-from utils.common import colorize
-from utils.visualization import draw_onepose_3d_box
-from models.nerf import img2mse, mse2psnr
+from nerf_loc.utils.metrics import compute_pose_error, compute_matching_iou
+from nerf_loc.utils.common import colorize
+from nerf_loc.utils.visualization import draw_onepose_3d_box
+from nerf_loc.models.nerf import img2mse, mse2psnr
 
 # define the LightningModule
 class Model(pl.LightningModule):

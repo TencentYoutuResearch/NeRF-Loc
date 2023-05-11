@@ -6,7 +6,7 @@ _C.expname = ''
 _C.basedir = ''
 _C.datadir = ''
 _C.version = 'default'
-_C.ckpt = None
+_C.ckpt = ''
 _C.dataset_type = 'video_cambridge'
 _C.scenes = []
 

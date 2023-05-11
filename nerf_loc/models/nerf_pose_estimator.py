@@ -19,10 +19,10 @@ from .COTR.backbone2d import build_backbone as build_cotr_backbone
 from .matcher import Matcher
 
 from .COTR.position_encoding import PositionEmbeddingSine
-from utils.metrics import compute_pose_error
+from nerf_loc.utils.metrics import compute_pose_error
 
 from .utils import camera_project
-from datasets.colmap.read_write_model import qvec2rotmat
+from nerf_loc.datasets.colmap.read_write_model import qvec2rotmat
 
 from .pose_optimizer import PoseOptimizer
 from .conditional_nerf.utils import get_embedder

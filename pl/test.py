@@ -9,14 +9,15 @@ Copyright (c) 2022 by Tencent, All Rights Reserved.
 """
 import argparse
 import os
-from configs import get_cfg_defaults, override_cfg_with_args
 import torch
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import TensorBoardLogger
-from model import Model
-from datasets import build_dataset
 
-from models.nerf_pose_estimator import NerfPoseEstimator
+from nerf_loc.configs import get_cfg_defaults, override_cfg_with_args
+from nerf_loc.datasets import build_dataset
+from nerf_loc.models.nerf_pose_estimator import NerfPoseEstimator
+
+from .model import Model
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

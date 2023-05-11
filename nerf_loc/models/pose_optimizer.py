@@ -14,10 +14,10 @@ import torchvision
 
 import numpy as np
 
-from utils.transform.se3 import se3_exp_map, se3_log_map
+from nerf_loc.utils.transform.se3 import se3_exp_map, se3_log_map
 from .superpoint import SuperPoint
 
-from utils.metrics import compute_pose_error
+from nerf_loc.utils.metrics import compute_pose_error
 
 class PoseOptimizer(object):
     def __init__(self, args, nerf_renderer, debug=False, sampling='random', use_feat=True):

@@ -23,7 +23,6 @@ from collections import defaultdict
 import models.image_retrieval as image_retrieval
 from models.image_retrieval.base_model import dynamic_load
 
-from configs import config_parser
 from datasets import build_dataset
 from utils.metrics import compute_pose_error
 
@@ -230,14 +229,20 @@ def evaluate_image_retrieval(db_poses_dict, query_poses_dict, top_k_pairs, rot_t
     print(f'Image retrieval metrics: ', metrics)
 
 if __name__ == '__main__':
-    parser = config_parser()
+    import argparse
+    from configs import get_cfg_defaults
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--config', type=str, help='config file path')
     args = parser.parse_args()
 
-    k = args.image_retrieval_top_k
-    train_interval = args.image_retrieval_interval_train
-    test_interval = args.image_retrieval_interval_test
-    multi_trainset = build_dataset(args, 'train')
-    multi_testset = build_dataset(args, 'test')
+    cfg = get_cfg_defaults()
+    cfg.merge_from_file(args.config)
+
+    k = cfg.image_core_set_size
+    train_interval = cfg.image_retrieval_interval_train
+    test_interval = cfg.image_retrieval_interval_test
+    multi_trainset = build_dataset(cfg, 'train')
+    multi_testset = build_dataset(cfg, 'test')
     # assert len(trainset.datasets) == 1 and len(testset.datasets) == 1
     for i in range(len(multi_trainset.datasets)):
         trainset = multi_trainset.datasets[i]
@@ -250,7 +255,7 @@ if __name__ == '__main__':
         test_dataloader = torch.utils.data.DataLoader(
             testset, batch_size=1, num_workers=8, shuffle=False, drop_last=False)
 
-        if args.image_retrieval_method == 'oracle':
+        if cfg.image_retrieval_method == 'oracle':
             train_poses = extract_poses(train_dataloader)
             test_poses = extract_poses(test_dataloader)
             train_to_train = \
@@ -259,7 +264,7 @@ if __name__ == '__main__':
                 retrieve_top_k_oracle(test_poses, train_poses, allow_self_match=False, k=k, interval=test_interval)
         else:
             # conf = configs['dir']
-            conf = configs[args.image_retrieval_method]
+            conf = configs[cfg.image_retrieval_method]
             device = 'cuda' if torch.cuda.is_available() else 'cpu'
             Model = dynamic_load(image_retrieval, conf['model']['name'])
             print(Model)
@@ -276,16 +281,16 @@ if __name__ == '__main__':
         evaluate_image_retrieval(train_poses, test_poses, test_to_train, max_k=k)
 
         with open(os.path.join(
-                trainset.scene_dir, f'image_retrieval_train_{args.image_retrieval_method}.pkl'), 'wb') as f:
+                trainset.scene_dir, f'image_retrieval_train_{cfg.image_retrieval_method}.pkl'), 'wb') as f:
             pkl.dump(train_to_train, f)
 
         with open(os.path.join(
-                testset.scene_dir, f'image_retrieval_test_{args.image_retrieval_method}.pkl'), 'wb') as f:
+                testset.scene_dir, f'image_retrieval_test_{cfg.image_retrieval_method}.pkl'), 'wb') as f:
             pkl.dump(test_to_train, f)
 
         # if os.path.exists(os.path.join(trainset.root_dir, trainset.scene, 'synthesis', 'info.pkl')):
         #     # synthesis split
-        #     synset = build_dataset(args, 'synthesis')
+        #     synset = build_dataset(cfg, 'synthesis')
         #     syn_descriptors = extract_global_descriptors(synset, model)
         #     syn_to_train = retrieve_top_k(syn_descriptors, train_descriptors)
 

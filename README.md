@@ -6,8 +6,12 @@ This project the PyTorch implementation of [NeRF-Loc](https://arxiv.org/abs/2304
 
 ## Installation
 
-1. install colmap
-2. install python packages
+1. clone with submodules
+```
+git clone --recursive https://github.com/JenningsL/nerf-loc.git
+```
+2. install colmap, following the instruction [here](https://colmap.github.io/install.html)
+3. install python packages
 
 ```
 pip install -r requirements.txt
@@ -79,7 +83,6 @@ Our codes are largely borrowed from the following works, thanks for their excell
 + [Colmap](https://github.com/colmap/colmap)
 
 ## Citation
-TODO:
 ```
 @misc{liu2023nerfloc,
       title={NeRF-Loc: Visual Localization with Conditional Neural Radiance Field}, 
